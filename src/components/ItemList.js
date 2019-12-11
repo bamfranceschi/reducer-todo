@@ -1,13 +1,17 @@
-import React, { useReducer } from "react";
-import { reducer, initialState } from "../reducers/reducer";
+import React, { useContext } from "react";
+
+import { ListContext } from "../contexts/ListContext";
 
 const ItemList = () => {
-  const [itemsState, dispatch] = useReducer(reducer, initialState);
-  console.log(itemsState);
+  const { state } = useContext(ListContext);
+  // need to import a useContext from(ListContext)
+  //need to set items against useContext
+
+  console.log(state);
   return (
     <div>
-      {itemsState.map(item => (
-        <p>{item.item}</p>
+      {state.todoItems.map(item => (
+        <p key={item.id}>{item.name}</p>
       ))}
     </div>
   );
