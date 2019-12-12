@@ -5,7 +5,7 @@ const ToDoForm = () => {
   //import ListContext
   //set destructured variable to ListContext
 
-  const { addToDo } = useContext(ListContext);
+  const { addToDo, clearComplete } = useContext(ListContext);
 
   const [newToDo, setNewToDo] = useState("");
 
@@ -15,9 +15,13 @@ const ToDoForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    debugger;
     addToDo(newToDo);
     setNewToDo("");
+  };
+
+  const onClick = e => {
+    e.preventDefault();
+    clearComplete();
   };
 
   return (
@@ -29,7 +33,8 @@ const ToDoForm = () => {
         value={newToDo}
         onChange={handleChanges}
       ></input>
-      <button>Add ToDo </button>
+      <button>Add ToDo</button>
+      <button onClick={onClick}>Clear Completed</button>
     </form>
   );
 };

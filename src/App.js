@@ -14,8 +14,18 @@ function App() {
     dispatch({ type: "ADD_TODO", payload: item });
   };
 
+  const completeToDo = item => {
+    dispatch({ type: "COMPLETE_CLICK", payload: item });
+  };
+
+  const clearComplete = () => {
+    dispatch({ type: "CLEAR_COMPLETE" });
+  };
+
   return (
-    <ListContext.Provider value={{ state, addToDo }}>
+    <ListContext.Provider
+      value={{ state, addToDo, completeToDo, clearComplete }}
+    >
       <div className="App">
         <h1>Get Sh*t Done List</h1>
         <ItemList />

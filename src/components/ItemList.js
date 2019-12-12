@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Item from "./Item";
 
 import { ListContext } from "../contexts/ListContext";
 
@@ -11,7 +12,7 @@ const ItemList = () => {
   return (
     <div>
       {state.todoItems.map(item => (
-        <p key={item.id}>{item.name}</p>
+        <Item key={item.id} item={item} />
       ))}
     </div>
   );

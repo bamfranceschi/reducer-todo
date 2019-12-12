@@ -41,6 +41,22 @@ export const reducer = (state, action) => {
         ...state,
         todoItems: [...state.todoItems, newItem]
       };
+    case "COMPLETE_CLICK":
+      //incorporate payload here, and set to a simple toggle
+      return {
+        ...state,
+        todoItems: state.todoItems.map(item => {
+          if (item.id === action.payload.id) {
+            item.completed = !action.payload.completed;
+          }
+          return item;
+        })
+      };
+    case "CLEAR_COMPLETE":
+      return {
+        ...state,
+        todoItems: state.todoItems.filter(item => item.completed === false)
+      };
     default:
       return state;
   }
